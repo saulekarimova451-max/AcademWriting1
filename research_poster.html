@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Poster – Karimova, Omarov, Kurmangazykyzy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2b4a;
+    --navy-mid: #243660;
+    --navy-light: #2e4478;
+    --gold: #c8a84b;
+    --white: #ffffff;
+    --off-white: #f5f6f8;
+    --light-gray: #eaecf0;
+    --body-text: #1c1c2e;
+    --muted: #4a5568;
+  }
+
+  html, body {
+    width: 100%;
+    background: #d0d4dc;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .poster {
+    width: 1684px;
+    min-height: 1188px;
+    background: var(--white);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ─── HEADER BANNER ─── */
+  .header {
+    background: var(--navy);
+    padding: 22px 36px 18px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    border-bottom: 5px solid var(--gold);
+  }
+  .header-text { flex: 1; text-align: center; }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .header .authors {
+    color: #c8d8f8;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+  .header .university {
+    color: var(--gold);
+    font-size: 12.5px;
+    font-weight: 400;
+    margin-top: 3px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  /* ─── BODY ─── */
+  .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr;
+    gap: 0;
+    padding: 0;
+    background: var(--light-gray);
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 10px 12px 12px;
+    background: var(--light-gray);
+  }
+  .col:nth-child(2) { padding: 12px 10px; border-left: 2px solid #c9cdd6; border-right: 2px solid #c9cdd6; }
+  .col:nth-child(3) { padding: 12px 12px 12px 10px; }
+
+  /* ─── SECTION CARD ─── */
+  .section {
+    background: var(--white);
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .section-header {
+    background: var(--navy);
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .section-header .bar-accent {
+    width: 3px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .section-body {
+    padding: 10px 12px 11px;
+    font-size: 10.5px;
+    color: var(--body-text);
+    line-height: 1.55;
+  }
+
+  .section-body p {
+    margin-bottom: 5px;
+  }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  .section-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .section-body ul li {
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .section-body ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--navy-light);
+    font-size: 9px;
+    top: 2px;
+  }
+
+  .label {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── CHARTS AREA ─── */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .chart-title {
+    font-size: 8.5px;
+    color: var(--muted);
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    line-height: 1.3;
+  }
+
+  /* Donut charts via SVG */
+  svg.donut { overflow: visible; }
+
+  /* ─── REFERENCES ─── */
+  .refs-placeholder {
+    min-height: 90px;
+    background: #f0f2f7;
+    border: 2px dashed #b0b8cc;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 12px 11px;
+    color: var(--muted);
+    font-size: 10px;
+    font-style: italic;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── FOOTER STRIP ─── */
+  .footer-strip {
+    background: var(--navy);
+    border-top: 3px solid var(--gold);
+    padding: 5px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-strip span {
+    color: #8ba0c8;
+    font-size: 9.5px;
+    letter-spacing: 0.5px;
+  }
+  .footer-strip .course-tag {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* sub-label */
+  .sub {
+    font-size: 9px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* separator line inside body */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--light-gray);
+    margin: 5px 0;
+  }
+
+  /* stat highlight */
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+  .stat-pill {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 9.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .stat-pill.gold { background: var(--gold); color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ══════════ HEADER ══════════ -->
+  <div class="header">
+    <div class="header-text">
+      <h1>Students' Evaluation of the Accuracy of AI-Generated Content in Academic Contexts</h1>
+      <div class="authors">Saule Karimova &nbsp;·&nbsp; Sanzhar Omarov &nbsp;·&nbsp; Dilyara Kurmangazykyzy</div>
+      <div class="university">Astana IT University &nbsp;|&nbsp; Academic Writing Course &nbsp;|&nbsp; Instructor: Assel Seksenbayeva</div>
+    </div>
+  </div>
+
+  <!-- ══════════ BODY COLUMNS ══════════ -->
+  <div class="body">
+
+    <!-- ═══ COLUMN 1 ═══ -->
+    <div class="col">
+
+      <!-- ABSTRACT -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>Abstract</h2></div>
+        <div class="section-body">
+          <p>This study investigates university students' perceptions of the accuracy of AI-generated content in academic contexts and examines the strategies used to verify it. Sixteen undergraduates completed an online survey; four participated in semi-structured interviews. While 80% regularly use AI tools, only 54% trust their factual accuracy, and 87% acknowledge that AI produces hallucinations. Four key themes emerged: AI as a starting point, misleading confident tone, fabricated citations as the hardest challenge, and a demand for structured AI literacy training. The study concludes that students rely on self-taught, inconsistent verification methods, and universities must embed AI literacy as a formal academic skill.</p>
+        </div>
+      </div>
+
+      <!-- INTRODUCTION -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>Introduction</h2></div>
+        <div class="section-body">
+          <ul>
+            <li><span class="label">Research Context:</span> AI tools (e.g., ChatGPT) are widely used by university students for essay writing, research assistance, and self-study, yet they frequently generate factually incorrect or fabricated "hallucinated" content.</li>
+            <li><span class="label">Problem Statement:</span> Students use AI regularly but often fail to verify its accuracy; a gap between awareness of AI limitations and actual verification behaviour poses risks to academic integrity.</li>
+            <li><span class="label">Research Aim:</span> To investigate students' perceptions of AI content accuracy and identify their evaluation and verification strategies at Astana IT University.</li>
+            <li><span class="label">Research Objectives:</span>
+              <ul style="margin-top:3px">
+                <li>Investigate perceptions of AI-generated content accuracy</li>
+                <li>Identify verification strategies used in academic work</li>
+                <li>Examine barriers that prevent consistent verification</li>
+              </ul>
+            </li>
+            <li><span class="label">RQ1:</span> How do students perceive the accuracy of AI-generated content in academic tasks?</li>
+            <li><span class="label">RQ2:</span> What strategies do students use to evaluate and verify AI-generated content?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- METHODOLOGY -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>Methodology</h2></div>
+        <div class="section-body">
+          <ul>
+            <li><span class="label">Participants:</span> 16 undergraduate students (survey); 4 purposively selected students from different institutions (interviews)</li>
+            <li><span class="label">Research Methods:</span> Mixed-methods — online quantitative/qualitative survey + semi-structured interviews</li>
+            <li><span class="label">Data Collection:</span> Microsoft Forms questionnaire + face-to-face audio-recorded interviews (3–5 min each); conducted at Astana IT University</li>
+            <li><span class="label">Survey Details:</span> Multiple-choice, Likert-scale, and open-ended items covering AI usage, trust, verification habits, and academic integrity</li>
+            <li><span class="label">Interview Details:</span> Identical questions for all participants; topics: AI usage habits, trust, verification practices, academic integrity</li>
+            <li><span class="label">Analysis:</span> Frequencies &amp; percentages for survey; inductive thematic analysis for interviews; triangulation of both</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /col1 -->
+
+    <!-- ═══ COLUMN 2 ═══ -->
+    <div class="col">
+
+      <!-- RESULTS & FINDINGS -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>Results &amp; Findings</h2></div>
+        <div class="section-body">
+          <ul>
+            <li><span class="label">AI Tool Usage:</span> 80% are regular users (60% "often", 20% "sometimes"); ChatGPT most used (40%), followed by Gemini (33%), Claude (20%), Copilot (7%)</li>
+            <li><span class="label">Trust vs. Awareness Paradox:</span> 54% trust AI factual accuracy — yet 87% agree AI produces hallucinations, and 73% agree unverified AI harms academic quality</li>
+            <li><span class="label">Perceived Accuracy:</span> 60% found AI "somewhat accurate", 20% "somewhat inaccurate", 13% neutral, 7% "very accurate"</li>
+            <li><span class="label">Verification Behaviour:</span> Only 67% consistently verify before submitting; 27% always verify, 40% often verify; 27% unknowingly submitted inaccurate AI content</li>
+            <li><span class="label">Verification Methods:</span> General websites (33%), textbooks/course materials (27%), academic databases (27%), cross-referencing AI tools (13%)</li>
+            <li><span class="label">Barriers:</span> 46.7% cite time constraints; 6.7% trust AI; 6.7% don't know how to check</li>
+            <li><span class="label">Academic Integrity:</span> 80% feel personally responsible for verification; 67% view unverified AI use as academic dishonesty</li>
+          </ul>
+
+          <!-- Key stat pills -->
+          <div class="stat-row">
+            <span class="stat-pill">80% regular AI users</span>
+            <span class="stat-pill gold">87% aware of hallucinations</span>
+            <span class="stat-pill">54% still trust AI output</span>
+            <span class="stat-pill gold">27% submitted inaccurate content</span>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+
+          <!-- Chart 1: AI Tool Usage -->
+          <div class="chart-box">
+            <svg class="donut" width="105" height="105" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e8eaf0" stroke-width="6"/>
+              <!-- ChatGPT 40% -->
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#1a2b4a" stroke-width="6"
+                stroke-dasharray="40 60" stroke-dashoffset="25"/>
+              <!-- Gemini 33% -->
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#c8a84b" stroke-width="6"
+                stroke-dasharray="33 67" stroke-dashoffset="-15"/>
+              <!-- Claude 20% -->
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#2e4478" stroke-width="6"
+                stroke-dasharray="20 80" stroke-dashoffset="-48"/>
+              <!-- Copilot 7% -->
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#a0aec0" stroke-width="6"
+                stroke-dasharray="7 93" stroke-dashoffset="-68"/>
+              <text x="21" y="20" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#1a2b4a">AI</text>
+              <text x="21" y="25.5" text-anchor="middle" font-size="4.5" fill="#4a5568">Tools</text>
+            </svg>
+            <div class="chart-title">FIG 1. AI TOOL USAGE<br><span class="sub">ChatGPT 40% · Gemini 33% · Claude 20% · Copilot 7%</span></div>
+          </div>
+
+          <!-- Chart 2: Trust vs Hallucination awareness -->
+          <div class="chart-box">
+            <svg class="donut" width="105" height="105" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e8eaf0" stroke-width="6"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#1a2b4a" stroke-width="6"
+                stroke-dasharray="87 13" stroke-dashoffset="25"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#c8a84b" stroke-width="6"
+                stroke-dasharray="54 46" stroke-dashoffset="-62"/>
+              <text x="21" y="20" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#1a2b4a">87%</text>
+              <text x="21" y="25.5" text-anchor="middle" font-size="4" fill="#4a5568">hallucin.</text>
+            </svg>
+            <div class="chart-title">FIG 2. TRUST VS HALLUCINATION<br><span class="sub">87% aware of hallucinations · 54% still trust AI</span></div>
+          </div>
+
+          <!-- Chart 3: Verification Frequency -->
+          <div class="chart-box">
+            <svg class="donut" width="105" height="105" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e8eaf0" stroke-width="6"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#1a2b4a" stroke-width="6"
+                stroke-dasharray="27 73" stroke-dashoffset="25"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#c8a84b" stroke-width="6"
+                stroke-dasharray="40 60" stroke-dashoffset="-2"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#a0aec0" stroke-width="6"
+                stroke-dasharray="33 67" stroke-dashoffset="-42"/>
+              <text x="21" y="20" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#1a2b4a">67%</text>
+              <text x="21" y="25.5" text-anchor="middle" font-size="4" fill="#4a5568">verify</text>
+            </svg>
+            <div class="chart-title">FIG 3. VERIFICATION FREQUENCY<br><span class="sub">Always 27% · Often 40% · Sometimes/Never 33%</span></div>
+          </div>
+
+          <!-- Chart 4: Barriers to verification -->
+          <div class="chart-box">
+            <svg class="donut" width="105" height="105" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e8eaf0" stroke-width="6"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#1a2b4a" stroke-width="6"
+                stroke-dasharray="47 53" stroke-dashoffset="25"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#c8a84b" stroke-width="6"
+                stroke-dasharray="40 60" stroke-dashoffset="-22"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#2e4478" stroke-width="6"
+                stroke-dasharray="7 93" stroke-dashoffset="-62"/>
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e07070" stroke-width="6"
+                stroke-dasharray="6 94" stroke-dashoffset="-69"/>
+              <text x="21" y="20" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#1a2b4a">46.7%</text>
+              <text x="21" y="25.5" text-anchor="middle" font-size="3.8" fill="#4a5568">time barrier</text>
+            </svg>
+            <div class="chart-title">FIG 4. BARRIERS TO VERIFICATION<br><span class="sub">Time 46.7% · Always verify 40% · Trust AI 6.7% · Don't know 6.7%</span></div>
+          </div>
+
+        </div><!-- /charts-grid -->
+      </div>
+
+    </div><!-- /col2 -->
+
+    <!-- ═══ COLUMN 3 ═══ -->
+    <div class="col">
+
+      <!-- DISCUSSION -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>Discussion</h2></div>
+        <div class="section-body">
+          <ul>
+            <li><span class="label">Interpretation:</span> A consistent gap exists between AI limitations awareness and actual verification behaviour; AI's surface-polished errors increase time cost of checking</li>
+            <li><span class="label">Comparison with Prior Research:</span> Aligns with Martín-Moncunill &amp; Alonso Martínez (2025) — weak verification despite distrust; extends findings by identifying fabricated citations as the most difficult specific challenge</li>
+            <li><span class="label">Usage Rate:</span> 80% regular use mirrors Black &amp; Tomlinson (2025); verification habits are self-taught, supporting Acosta-Enriquez et al. (2024) on the intention–behaviour gap</li>
+            <li><span class="label">Implications:</span> Without structured guidance, intention to verify does not produce consistent behaviour; universities must formalise AI literacy</li>
+            <li><span class="label">Limitations:</span> Small sample (n=16, single institution); self-reported data; short interviews (3–5 min) limit qualitative depth</li>
+            <li><span class="label">Recommendations:</span> Embed AI literacy formally; design hands-on verification workshops; provide training on academic database tools</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CONCLUSION -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>Conclusion</h2></div>
+        <div class="section-body">
+          <ul>
+            <li><span class="label">Main Conclusion:</span> Students demonstrate a trust–scepticism paradox: they regularly use AI tools while acknowledging hallucination risks, yet rely on informal, inconsistent verification methods</li>
+            <li><span class="label">Key Insight:</span> Fabricated citations are the most challenging type of hallucination to detect; AI's confident tone obscures errors and misleads users</li>
+            <li><span class="label">Significance:</span> As AI becomes embedded in academic practice, evaluation skills constitute a core academic competency that formal curricula must address</li>
+            <li><span class="label">Final Recommendation:</span> Universities should integrate structured, practice-based AI literacy programmes — including verification training and hands-on workshops — as a formal academic requirement</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- REFERENCES -->
+      <div class="section">
+        <div class="section-header"><div class="bar-accent"></div><h2>References</h2></div>
+        <div class="refs-placeholder">
+          [ Photo of references to be attached here ]
+        </div>
+      </div>
+
+    </div><!-- /col3 -->
+
+  </div><!-- /body -->
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <div class="footer-strip">
+    <span>Astana IT University &nbsp;|&nbsp; Academic Writing</span>
+    <span class="course-tag">Instructor: Assel Seksenbayeva</span>
+    <span>Karimova · Omarov · Kurmangazykyzy &nbsp;|&nbsp; 2025</span>
+  </div>
+
+</div><!-- /poster -->
+</body>
+</html>
